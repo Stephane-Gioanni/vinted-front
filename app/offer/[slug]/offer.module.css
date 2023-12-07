@@ -1,0 +1,210 @@
+.image {
+  width: 300px;
+}
+
+.main {
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 100vw;
+}
+
+.topMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 310px;
+  width: 100%;
+}
+
+.body {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bodyLeft {
+  width: 925px;
+  height: 630px;
+  flex-wrap: wrap;
+  background-color: white;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bodyRightInfos {
+  width: 295px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 0;
+  margin-bottom: 14px;
+}
+
+.bodyRightInfosTop {
+  width: 255px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  font-size: 24px;
+  padding-bottom: 15px;
+  color: black;
+}
+
+.product_details {
+  color: #757575;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 19px;
+  border-top: 1.5px solid #f2f2f2;
+  padding-top: 15px;
+}
+
+.sep {
+  border-top: 1.5px solid #f2f2f2;
+  margin: 25px 0;
+  width: 100%;
+}
+
+.bodyRightInfosBottom {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.product_infos {
+  color: #757575;
+  font-size: 13px;
+  line-height: 19px;
+  width: 255px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 25px;
+
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.product_name {
+  font-size: 16px;
+  color: #171717;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.product_description {
+  font-size: 16px;
+  color: #4d4d4d;
+}
+
+.bodyRightButtons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 25px;
+}
+
+.button_acheter {
+  width: 255px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #017782;
+  color: white;
+}
+
+.button_acheter:hover {
+  cursor: pointer;
+}
+
+.button {
+  width: 255px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border: 1px solid #017782;
+  border-radius: 5px;
+  background-color: white;
+  color: #017782;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.bodyRightInfosUser {
+  width: 295px;
+  padding: 15px 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.userInfos {
+  width: 250px;
+  display: flex;
+  align-items: center;
+}
+
+.avatarPicture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.userContactSection {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #017782;
+}
+
+.follow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 150px;
+  border-left: 1.5px solid #f2f2f2;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 150px;
+}
+
+.contact:hover {
+  cursor: pointer;
+}
+
+.follow:hover {
+  cursor: pointer;
+}
