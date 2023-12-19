@@ -2,21 +2,36 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import Widthalert from "../Components/Widthalert";
 import Header from "@/app/Components/Header";
-import styles from "./signup.module.css";
-import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Link from "next/link";
+import styles from "./signup.module.css";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [file, setFile] = useState({});
+
+  const [windowWidth, setWindowWidth] = useState(1200);
 
   console.log(email, username, password);
 
   const router = useRouter();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   const setUser = (tokenToSet) => {
     Cookies.set("userToken", tokenToSet);
@@ -25,15 +40,16 @@ export default function Signup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (email && username && password) {
+      if (email && username && password && file) {
         const formData = new FormData();
 
         formData.append("email", email);
         formData.append("username", username);
         formData.append("password", password);
+        formData.append("picture", file);
 
         const response = await axios.post(
-          "http://localhost:4000/user/signup",
+          "https://vinted-back-0d6ef682592d.herokuapp.com/user/signup",
           formData,
           {
             headers: {
@@ -42,24 +58,25 @@ export default function Signup() {
           }
         );
         if (response.data.token) {
-          alert("created");
           setUser(response.data.token);
           router.push("/");
         } else {
           alert("une erreur est survenue");
         }
+      } else {
+        alert("Missing parameters");
       }
     } catch (error) {
-      alert(error.response.data.message);
+      alert(error.message);
     }
   };
 
-  return (
+  return windowWidth > 1100 ? (
     <div className={styles.signup}>
       <Header></Header>
       <div>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <h1 className={styles.h1}>S'inscrire</h1>
+          <h1 className={styles.h1}>Sign in</h1>
 
           <input
             type="email"
@@ -79,23 +96,32 @@ export default function Signup() {
 
           <input
             type="password"
-            placeholder="password"
+            placeholder="Password"
             className={styles.input}
             value={password}
             onChange={(event) => {
               setPassword(event.target.value);
             }}
           />
+
+          <div className={styles.inputFile}>
+            <input
+              type="file"
+              onChange={(event) => setFile(event.target.files[0])}
+            />
+          </div>
           <button type="submit" className={styles.button}>
-            Créer un compte
+            Create an account
           </button>
           <Link href="/login">
             <p className={styles.lastSentence}>
-              Tu as déjà un compte? Connecte toi!
+              Already have an account? Log in !
             </p>
           </Link>
         </form>
       </div>
     </div>
+  ) : (
+    <Widthalert></Widthalert>
   );
 }

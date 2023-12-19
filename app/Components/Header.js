@@ -37,7 +37,7 @@ export default function Header({ title, setTitle }) {
           value={title}
           onChange={(event) => setTitle(event.target.value)}
           className={styles.searchBar}
-          placeholder="Rechercher des articles"
+          placeholder="Search for items?"
         />
 
         {token ? (
@@ -46,22 +46,22 @@ export default function Header({ title, setTitle }) {
               className={styles.disconnect}
               onClick={(event) => deconnect(setToken(null))}
             >
-              Se deconnecter
+              Disconnect
             </button>
             <Link href="/publish">
-              <button className={styles.sell_button}>Vends tes articles</button>
+              <button className={styles.sell_button}>Sell now</button>
             </Link>
           </div>
         ) : (
           <div className={styles.buttons}>
             <Link href="/signup">
-              <button className={styles.auth_button}>S'inscrire</button>
+              <button className={styles.auth_button}>Sign up</button>
             </Link>
             <Link href="/login">
-              <button className={styles.auth_button}>Se connecter</button>
+              <button className={styles.auth_button}>Log in</button>
             </Link>
             <Link href="/publish">
-              <button className={styles.sell_button}>Vends tes articles</button>
+              <button className={styles.sell_button}>Sell now</button>
             </Link>
           </div>
         )}

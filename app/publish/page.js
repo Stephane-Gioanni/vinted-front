@@ -1,19 +1,22 @@
 "use client";
 
-import Header from "../Components/Header";
 import { useRouter } from "next/navigation";
-
-import styles from "./publish.module.css";
 import { useState } from "react";
+import { useEffect } from "react";
+import Header from "../Components/Header";
+import Widthalert from "../Components/Widthalert";
 import Cookies from "js-cookie";
 import axios from "axios";
 import Link from "next/link";
+import styles from "./publish.module.css";
 
 export default function Page() {
   const router = useRouter();
 
   const [token, setToken] = useState(Cookies.get("userToken") || null);
   console.log(token);
+
+  const [windowWidth, setWindowWidth] = useState(1200);
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -24,6 +27,17 @@ export default function Page() {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [file, setFile] = useState({});
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,7 +55,7 @@ export default function Page() {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/offer/publish",
+        "https://vinted-back-0d6ef682592d.herokuapp.com/offer/publish",
         formData,
         {
           headers: {
@@ -62,18 +76,18 @@ export default function Page() {
     }
   };
 
-  return (
+  return windowWidth > 1100 ? (
     <div className={styles.publish}>
       <Header></Header>
 
       {token ? (
         <div>
           <form onSubmit={handleSubmit} className={styles.form}>
-            <h1 className={styles.h1}>Publier un article</h1>
+            <h1 className={styles.h1}>Publish an offer</h1>
             <input
               type="text"
               className={styles.input}
-              placeholder="Nom du produit"
+              placeholder="Product name"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
             />
@@ -81,7 +95,7 @@ export default function Page() {
             <input
               type="text"
               className={styles.input}
-              placeholder="Prix"
+              placeholder="Price"
               value={price}
               onChange={(event) => setPrice(event.target.value)}
             />
@@ -102,28 +116,28 @@ export default function Page() {
             <input
               type="text"
               className={styles.input}
-              placeholder="Emplacement"
+              placeholder="Location"
               value={city}
               onChange={(event) => setCity(event.target.value)}
             />
             <input
               type="text"
               className={styles.input}
-              placeholder="Marque"
+              placeholder="Brand"
               value={brand}
               onChange={(event) => setBrand(event.target.value)}
             />
             <input
               type="text"
               className={styles.input}
-              placeholder="Taille"
+              placeholder="Size"
               value={size}
               onChange={(event) => setSize(event.target.value)}
             />
             <input
               type="text"
               className={styles.input}
-              placeholder="Couleur"
+              placeholder="Color"
               value={color}
               onChange={(event) => setColor(event.target.value)}
             />
@@ -134,17 +148,21 @@ export default function Page() {
               />
             </div>
             <button type="submit" className={styles.button}>
-              Publier
+              Publish
             </button>
           </form>
         </div>
       ) : (
         <div>
           <p>
-            Vous devez vous <Link href="/login">connecter</Link>
+            You must be <Link href="/login">connected</Link>
           </p>
         </div>
       )}
+    </div>
+  ) : (
+    <div>
+      <Widthalert></Widthalert>{" "}
     </div>
   );
 }
