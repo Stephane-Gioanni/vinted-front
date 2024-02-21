@@ -2,7 +2,8 @@
 "use client";
 
 import styles from "./page.module.css";
-import Header from "@/app/Components/Header";
+import HeaderMainPage from "./Components/HeaderMainPage";
+import Header from "./Components/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -53,7 +54,7 @@ export default function Home() {
       {windowWidth > 1100 ? (
         <div>
           <main>
-            <Header title={title} setTitle={setTitle}></Header>
+            <HeaderMainPage title={title} setTitle={setTitle}></HeaderMainPage>
 
             <div>
               <Image
@@ -62,6 +63,15 @@ export default function Home() {
                 alt={banniere}
                 className={styles.banniere}
               ></Image>
+              <div className={styles.boxOnImage}>
+                <span className={styles.boxOnImageText}>
+                  Ready to declutter your closet?
+                </span>
+
+                <Link href="/publish">
+                  <button className={styles.sell_button}>Sell now</button>
+                </Link>
+              </div>
               <div className="container">
                 <div className={styles.filters}>
                   <div className={styles.priceSection}>

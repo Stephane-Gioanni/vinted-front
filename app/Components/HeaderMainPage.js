@@ -10,7 +10,7 @@ import Cookies from "js-cookie";
 import Logo from "../Images/logo.png";
 import Image from "next/image";
 
-export default function Header({ title, setTitle }) {
+export default function HeaderMainPage({ title, setTitle }) {
   const router = useRouter();
 
   const [token, setToken] = useState(Cookies.get("userToken") || null);
@@ -32,11 +32,19 @@ export default function Header({ title, setTitle }) {
           ></Image>
         </Link>
 
+        <input
+          type="placeholder"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          className={styles.searchBar}
+          placeholder="Search for items?"
+        />
+
         {token ? (
           <div className={styles.buttons}>
             <button
               className={styles.disconnect}
-              onClick={(event) => deconnect(setToken(null), router.push("/"))}
+              onClick={(event) => deconnect(setToken(null))}
             >
               Disconnect
             </button>
