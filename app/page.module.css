@@ -102,6 +102,7 @@
   height: 30px;
   border: none;
   border-bottom: 1px solid #017782;
+  outline: none;
 }
 
 .priceFilteredByBox {
