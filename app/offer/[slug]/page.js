@@ -8,6 +8,7 @@ import Widthalert from "@/app/Components/Widthalert";
 import Image from "next/image";
 import Banniere from "./banniere.png";
 import styles from "./offer.module.css";
+import AlertUnavailable from "@/app/Components/AlertUnavailable";
 
 export default function Offer({ params }) {
   let param = params.slug;
@@ -15,6 +16,7 @@ export default function Offer({ params }) {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [windowWidth, setWindowWidth] = useState(1200);
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,22 +100,41 @@ export default function Offer({ params }) {
                           </span>
                         </div>
                         <div className={styles.bodyRightButtons}>
-                          <button
-                            className={styles.button_acheter}
-                            onClick={() => {
-                              alert(
-                                "Sorry, this functionnality is disabled at the moment"
-                              );
-                            }}
-                          >
-                            Buy
-                          </button>
+                          {alert === true ? (
+                            <div
+                              onClick={() => {
+                                setAlert(false);
+                              }}
+                            >
+                              <AlertUnavailable></AlertUnavailable>
+                            </div>
+                          ) : (
+                            <div></div>
+                          )}
+
+                          <div>
+                            <button
+                              className={styles.button_acheter}
+                              onClick={() => {
+                                if (alert === true) {
+                                  setAlert(false);
+                                } else if (alert === false) {
+                                  setAlert(true);
+                                }
+                              }}
+                            >
+                              Buy
+                            </button>
+                          </div>
+
                           <button
                             className={styles.button}
                             onClick={() => {
-                              alert(
-                                "Sorry, this functionnality is disabled at the moment"
-                              );
+                              if (alert === true) {
+                                setAlert(false);
+                              } else if (alert === false) {
+                                setAlert(true);
+                              }
                             }}
                           >
                             Made an offer
@@ -121,23 +142,30 @@ export default function Offer({ params }) {
                           <button
                             className={styles.button}
                             onClick={() => {
-                              alert(
-                                "Sorry, this functionnality is disabled at the moment"
-                              );
+                              if (alert === true) {
+                                setAlert(false);
+                              } else if (alert === false) {
+                                setAlert(true);
+                              }
                             }}
                           >
                             Message
                           </button>
-                          <button
-                            className={styles.button}
-                            onClick={() => {
-                              alert(
-                                "Sorry, this functionnality is disabled at the moment"
-                              );
-                            }}
-                          >
-                            Favorite
-                          </button>
+
+                          <div>
+                            <button
+                              className={styles.button}
+                              onClick={() => {
+                                if (alert === true) {
+                                  setAlert(false);
+                                } else if (alert === false) {
+                                  setAlert(true);
+                                }
+                              }}
+                            >
+                              Favorite
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -155,9 +183,11 @@ export default function Offer({ params }) {
                         <span
                           className={styles.contact}
                           onClick={() => {
-                            alert(
-                              "Sorry, this functionnality is disabled at the moment"
-                            );
+                            if (alert === true) {
+                              setAlert(false);
+                            } else if (alert === false) {
+                              setAlert(true);
+                            }
                           }}
                         >
                           Contact
@@ -166,9 +196,11 @@ export default function Offer({ params }) {
                         <span
                           className={styles.follow}
                           onClick={() => {
-                            alert(
-                              "Sorry, this functionnality is disabled at the moment"
-                            );
+                            if (alert === true) {
+                              setAlert(false);
+                            } else if (alert === false) {
+                              setAlert(true);
+                            }
                           }}
                         >
                           Follow

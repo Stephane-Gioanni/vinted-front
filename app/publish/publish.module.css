@@ -1,34 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
 .publish {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 1300px;
   width: 100%;
+  background-color: #f2f2f2;
 }
+
+/****** FORM  ******/
 
 .form {
   display: flex;
-  height: 800px;
-  width: 400px;
+  height: 1200px;
+  width: 966px;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
 }
 
-.input {
+/****** FORM HEAD ******/
+.formHead {
   width: 100%;
+  font-size: 25px;
+  font-weight: 300px;
+}
+
+/****** FORM SECTION ******/
+
+.formSections {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.section {
+  display: flex;
+  width: 100%;
+  padding: 25px;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.separation {
+  width: 100%;
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.descriptionSection {
+  display: flex;
+  width: 100%;
+  padding: 25px;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.textArea {
+  min-width: 50%;
+  max-width: 400px;
+  width: 50%;
+  height: 50px;
+  max-height: 150px;
+  overflow-y: scroll;
+  outline: none;
+  text-decoration: none;
+  border: none;
+  font-family: "Inter", sans-serif;
+
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.priceSection {
+  display: flex;
+  width: 100%;
+  padding: 25px;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.input {
+  width: 50%;
   border: none;
   height: 30px;
   color: #b7b7b7;
   border-bottom: 1px solid #b7b7b7;
+  outline: none;
+  font-family: "Inter", sans-serif;
 }
 
 .inputFile {
-  margin: 20px;
+  width: 50%;
+  border: none;
+  height: 30px;
+  color: #b7b7b7;
+  border: 1.5px dotted #b7b7b7;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
 }
 
-.button {
+/****** FORM BOTTOM ******/
+
+.formBottom {
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.uploadButton {
+  width: 150px;
   border: none;
   height: 50px;
   border-radius: 5px;
@@ -38,9 +129,24 @@
   background-color: #017782;
   color: white;
   margin-top: 20px;
+  font-size: 17px;
 }
 
-.h1 {
-  font-size: 25px;
-  font-weight: 300;
+.uploadButton:hover {
+  cursor: pointer;
+}
+
+.notConnectedBody {
+  display: flex;
+  align-items: center;
+}
+
+.notConnectedBox {
+  width: 380px;
+  height: 330px;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }

@@ -1,7 +1,3 @@
-.image {
-  width: 300px;
-}
-
 .main {
   background-color: #f2f2f2;
   width: 100%;
@@ -24,7 +20,7 @@
 
 .bodyLeft {
   width: 925px;
-  height: 630px;
+  height: 930px;
   flex-wrap: wrap;
   background-color: white;
 }

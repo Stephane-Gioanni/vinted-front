@@ -4,11 +4,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useEffect } from "react";
 import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 import Widthalert from "../Components/Widthalert";
 import Cookies from "js-cookie";
 import axios from "axios";
 import Link from "next/link";
 import styles from "./publish.module.css";
+import AlertPublished from "../Components/AlertPublished";
 
 export default function Page() {
   const router = useRouter();
@@ -27,6 +29,7 @@ export default function Page() {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [file, setFile] = useState({});
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -66,7 +69,7 @@ export default function Page() {
       );
       console.log(response.data);
       if (response.data._id) {
-        alert("Annonce publiée");
+        setAlert(true);
         router.push(`/offer/${response.data._id}`);
       } else {
         alert("une erreur est survenue");
@@ -77,88 +80,147 @@ export default function Page() {
   };
 
   return windowWidth > 1100 ? (
-    <div className={styles.publish}>
+    <div>
       <Header></Header>
+      <div className={styles.publish}>
+        {token ? (
+          <div>
+            {alert === true ? (
+              <div>
+                <AlertPublished
+                  onClick={() => {
+                    setAlert(false);
+                  }}
+                ></AlertPublished>
+              </div>
+            ) : (
+              <div></div>
+            )}
 
-      {token ? (
-        <div>
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <h1 className={styles.h1}>Publish an offer</h1>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Product name"
-              value={title}
-              onChange={(event) => setTitle(event.target.value)}
-            />
+            <form onSubmit={handleSubmit} className={styles.form}>
+              <div className={styles.formHead}>
+                <span className={styles.h1}>Sell your item</span>
+              </div>
 
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Price"
-              value={price}
-              onChange={(event) => setPrice(event.target.value)}
-            />
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Description"
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
-            />
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Condition"
-              value={condition}
-              onChange={(event) => setCondition(event.target.value)}
-            />
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Location"
-              value={city}
-              onChange={(event) => setCity(event.target.value)}
-            />
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Brand"
-              value={brand}
-              onChange={(event) => setBrand(event.target.value)}
-            />
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Size"
-              value={size}
-              onChange={(event) => setSize(event.target.value)}
-            />
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Color"
-              value={color}
-              onChange={(event) => setColor(event.target.value)}
-            />
-            <div className={styles.inputFile}>
-              <input
-                type="file"
-                onChange={(event) => setFile(event.target.files[0])}
-              />
+              <div className={styles.formSections}>
+                <div className={styles.section}>
+                  <span>Title</span>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="ex: Green shirt"
+                    value={title}
+                    onChange={(event) => setTitle(event.target.value)}
+                  />
+                </div>
+                <div className={styles.separation}></div>
+                <div className={styles.descriptionSection}>
+                  <span>Describe your item</span>
+                  <textarea
+                    type="text"
+                    className={styles.textArea}
+                    placeholder="ex: Worn a few times"
+                    value={description}
+                    onChange={(event) => setDescription(event.target.value)}
+                  />
+                </div>
+              </div>
+              <div className={styles.formSections}>
+                <div className={styles.section}>
+                  <span>Condition</span>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="Condition"
+                    value={condition}
+                    onChange={(event) => setCondition(event.target.value)}
+                  />
+                </div>
+                <div className={styles.separation}></div>
+                <div className={styles.section}>
+                  <span>Location</span>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="Location"
+                    value={city}
+                    onChange={(event) => setCity(event.target.value)}
+                  />
+                </div>
+                <div className={styles.separation}></div>
+                <div className={styles.section}>
+                  <span>Brand</span>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="Brand"
+                    value={brand}
+                    onChange={(event) => setBrand(event.target.value)}
+                  />
+                </div>
+                <div className={styles.separation}></div>
+                <div className={styles.section}>
+                  <span>Size</span>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="Size"
+                    value={size}
+                    onChange={(event) => setSize(event.target.value)}
+                  />
+                </div>
+                <div className={styles.separation}></div>
+                <div className={styles.section}>
+                  <span>Color</span>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    placeholder="Color"
+                    value={color}
+                    onChange={(event) => setColor(event.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className={styles.section}>
+                <span>Price</span>
+                <input
+                  type="text"
+                  className={styles.input}
+                  placeholder="Price"
+                  value={price}
+                  onChange={(event) => setPrice(event.target.value)}
+                />
+              </div>
+              <div className={styles.section}>
+                <span>Upload photo</span>
+                <div className={styles.inputFile}>
+                  <input
+                    type="file"
+                    onChange={(event) => setFile(event.target.files[0])}
+                  />
+                </div>
+              </div>
+
+              <div className={styles.formBottom}>
+                {" "}
+                <button type="submit" className={styles.uploadButton}>
+                  Upload
+                </button>
+              </div>
+            </form>
+          </div>
+        ) : (
+          <div className={styles.notConnectedBody}>
+            <div className={styles.notConnectedBox}>
+              <p>Join and sell pre-loved clothes with no fees </p>
+              <p>Already have an account?Log in</p>
+              <p>Or register withEmail</p>
             </div>
-            <button type="submit" className={styles.button}>
-              Publish
-            </button>
-          </form>
-        </div>
-      ) : (
-        <div>
-          <p>
-            You must be <Link href="/login">connected</Link>
-          </p>
-        </div>
-      )}
+          </div>
+        )}
+        <Footer></Footer>
+      </div>
     </div>
   ) : (
     <div>

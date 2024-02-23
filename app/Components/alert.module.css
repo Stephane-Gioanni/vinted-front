@@ -1,0 +1,58 @@
+/**** MAIN PAGE *****/
+.alertMainPage {
+  color: #017782;
+  border: 2px solid #017782;
+  background-color: white;
+  width: 500px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.alertMainPage:hover {
+  cursor: pointer;
+}
+
+/**** OFFER PAGE *****/
+
+.alert {
+  color: #017782;
+  border: 2px solid #017782;
+  background-color: white;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 756px;
+  right: 340px;
+  font-size: 15px;
+  padding: 0 20px;
+}
+
+.alert:hover {
+  cursor: pointer;
+}
+
+/**** PUBLISHED PAGE *****/
+
+.alertPublished {
+  color: #017782;
+  border: 2px solid #017782;
+  background-color: white;
+  width: 450px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 356px;
+  right: 730px;
+}
+
+.alertPublished:hover {
+  cursor: pointer;
+}

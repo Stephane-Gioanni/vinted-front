@@ -1,0 +1,28 @@
+.footer {
+  background-color: #f2f2f2;
+  margin-top: 35px;
+  border-top: 2px solid white;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.footerContained {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #017782;
+  font-size: 13px;
+  padding: 20px 0;
+}
+
+.portfolioLink {
+  color: #017782;
+  text-decoration: none;
+}
+
+.portfolioLink:hover {
+  cursor: pointer;
+}
