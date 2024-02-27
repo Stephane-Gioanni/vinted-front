@@ -57,21 +57,28 @@ export default function Home() {
             <HeaderMainPage title={title} setTitle={setTitle}></HeaderMainPage>
 
             <div>
-              <Image
-                priority={true}
-                src={banniere}
-                alt={banniere}
-                className={styles.banniere}
-              ></Image>
-              <div className={styles.boxOnImage}>
-                <span className={styles.boxOnImageText}>
-                  Ready to declutter your closet?
-                </span>
+              {title.length === 0 ? (
+                <div className={styles.bannerArea}>
+                  <Image
+                    priority={true}
+                    src={banniere}
+                    alt={banniere}
+                    className={styles.banniere}
+                  ></Image>
+                  <div className={styles.boxOnImage}>
+                    <span className={styles.boxOnImageText}>
+                      Ready to declutter your closet?
+                    </span>
 
-                <Link href="/publish">
-                  <button className={styles.sell_button}>Sell now</button>
-                </Link>
-              </div>
+                    <Link href="/publish">
+                      <button className={styles.sell_button}>Sell now</button>
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )}
+
               <div className="container">
                 <div className={styles.filters}>
                   <div className={styles.priceSection}>

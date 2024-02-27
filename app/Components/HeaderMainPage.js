@@ -41,7 +41,9 @@ export default function HeaderMainPage({ title, setTitle }) {
             <input
               type="placeholder"
               value={title}
-              onChange={(event) => setTitle(event.target.value)}
+              onChange={(event) => {
+                setTitle(event.target.value);
+              }}
               className={styles.searchBar}
               placeholder="Search for items?"
             />
