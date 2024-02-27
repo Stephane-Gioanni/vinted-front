@@ -13,7 +13,7 @@ import styles from "./publish.module.css";
 import AlertPublished from "../Components/AlertPublished";
 import AlertUnavailable from "../Components/AlertUnavailablePublish";
 import fblogo from "./Images/fblogo.png";
-// import googleLogo from "./Images/googleLogo.png";
+import googleLogo from "./Images/googlelogo.png";
 import appleLogo from "./Images/applelogo.png";
 import Image from "next/image";
 
@@ -255,7 +255,7 @@ export default function Page() {
               >
                 <Image
                   className={styles.logoConnect}
-                  src={appleLogo}
+                  src={googleLogo}
                   alt="logoGoogle"
                 ></Image>
                 <p>Continue with Google</p>
