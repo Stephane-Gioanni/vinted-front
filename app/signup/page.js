@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Widthalert from "../Components/Widthalert";
 import Header from "@/app/Components/Header";
+import Footer from "../Components/Footer";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Link from "next/link";
@@ -120,6 +121,7 @@ export default function Signup() {
           </Link>
         </form>
       </div>
+      <Footer></Footer>
     </div>
   ) : (
     <Widthalert></Widthalert>

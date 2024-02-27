@@ -2,8 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   height: 100vh;
   width: 100%;
+}
+
+.h1 {
+  font-size: 25px;
+  font-weight: 300;
 }
 
 .form {
@@ -25,9 +31,8 @@
   outline: none;
 }
 
-.h1 {
-  font-size: 25px;
-  font-weight: 300;
+.inputFile {
+  margin: 20px;
 }
 
 .button {
@@ -49,8 +54,4 @@
 
 .lastSentence {
   color: #017782;
-}
-
-.inputFile {
-  margin: 20px;
 }

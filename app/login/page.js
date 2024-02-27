@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Header from "@/app/Components/Header";
+import Footer from "../Components/Footer";
 import Widthalert from "../Components/Widthalert";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -96,6 +97,7 @@ export default function Login() {
           </Link>
         </form>
       </div>
+      <Footer></Footer>
     </div>
   ) : (
     <div>

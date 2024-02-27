@@ -56,3 +56,23 @@
 .alertPublished:hover {
   cursor: pointer;
 }
+
+.alertUnavailablePublish {
+  color: #017782;
+  border: 2px solid #017782;
+  background-color: white;
+  width: 500px;
+  height: 100px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 710px;
+}
+
+.alertUnavailablePublishLink {
+  text-decoration: none;
+  font-weight: bold;
+  color: #017782;
+}

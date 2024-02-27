@@ -11,6 +11,11 @@ import axios from "axios";
 import Link from "next/link";
 import styles from "./publish.module.css";
 import AlertPublished from "../Components/AlertPublished";
+import AlertUnavailable from "../Components/AlertUnavailablePublish";
+import fblogo from "./Images/fblogo.png";
+import googleLogo from "./Images/googleLogo.png";
+import appleLogo from "./Images/applelogo.png";
+import Image from "next/image";
 
 export default function Page() {
   const router = useRouter();
@@ -30,6 +35,7 @@ export default function Page() {
   const [color, setColor] = useState("");
   const [file, setFile] = useState({});
   const [alert, setAlert] = useState(false);
+  const [unavailableAlert, setUnavailableAlert] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -114,7 +120,7 @@ export default function Page() {
                   />
                 </div>
                 <div className={styles.separation}></div>
-                <div className={styles.descriptionSection}>
+                <div className={styles.section}>
                   <span>Describe your item</span>
                   <textarea
                     type="text"
@@ -213,9 +219,72 @@ export default function Page() {
         ) : (
           <div className={styles.notConnectedBody}>
             <div className={styles.notConnectedBox}>
-              <p>Join and sell pre-loved clothes with no fees </p>
-              <p>Already have an account?Log in</p>
-              <p>Or register withEmail</p>
+              <span className={styles.h1}>
+                Join and sell pre-loved clothes with no fees{" "}
+              </span>
+
+              {unavailableAlert === false ? (
+                <div
+                  className={styles.continueWithBox}
+                  onClick={() => {
+                    setUnavailableAlert(true);
+                  }}
+                >
+                  <Image
+                    className={styles.logoConnect}
+                    src={fblogo}
+                    alt="fbLogo"
+                  />
+                  <p>Continue with Facebook</p>
+                </div>
+              ) : (
+                <div
+                  onClick={() => {
+                    setUnavailableAlert(false);
+                  }}
+                >
+                  <AlertUnavailable></AlertUnavailable>
+                </div>
+              )}
+
+              <div
+                className={styles.continueWithBox}
+                onClick={() => {
+                  setUnavailableAlert(true);
+                }}
+              >
+                <Image
+                  className={styles.logoConnect}
+                  src={googleLogo}
+                  alt="logoGoogle"
+                ></Image>
+                <p>Continue with Google</p>
+              </div>
+              <div
+                className={styles.continueWithBox}
+                onClick={() => {
+                  setUnavailableAlert(true);
+                }}
+              >
+                <Image
+                  className={styles.logoConnect}
+                  src={appleLogo}
+                  alt="logoApple"
+                ></Image>
+                <p>Continue with Apple</p>
+              </div>
+              <p>
+                Already have an account?{" "}
+                <Link href="/login" className={styles.link}>
+                  Log in
+                </Link>
+              </p>
+              <p>
+                Or register with{" "}
+                <Link href="/signup" className={styles.link}>
+                  Email
+                </Link>
+              </p>
             </div>
           </div>
         )}

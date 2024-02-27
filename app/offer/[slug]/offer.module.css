@@ -1,7 +1,7 @@
 .main {
   background-color: #f2f2f2;
   width: 100%;
-  height: 100vw;
+  height: 100%;
 }
 
 .topMain {
@@ -14,6 +14,7 @@
 
 .body {
   width: 100%;
+  height: 1000px;
   display: flex;
   justify-content: space-between;
 }

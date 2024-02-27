@@ -44,7 +44,7 @@
 
 /******************** MAIN *************************/
 
-/*** FILTERS SECTION ***/
+/******** FILTERS SECTION ********/
 
 .filters {
   display: flex;
@@ -55,6 +55,8 @@
   border-bottom: 1px solid #c6c6c6;
   border-top: 1px solid #c6c6c6;
 }
+
+/*** Price section ***/
 
 .priceSection {
   height: 100%;
@@ -128,6 +130,8 @@
   background-color: #ffffff;
 }
 
+/*** Filter by section ***/
+
 .checkedButton {
   background-color: #017782;
   height: 25px;
@@ -146,6 +150,8 @@
   width: 9px;
   border: None;
 }
+
+/*** ResultsPerPage section ***/
 
 .resultsPerPageSection {
   height: 26px;
@@ -184,7 +190,7 @@
   margin: 5px 0;
 }
 
-/*** OFFERS SECTION ***/
+/********* OFFERS SECTION ************/
 
 .offersCentre {
   width: 100%;
@@ -256,7 +262,7 @@
   object-fit: cover;
 }
 
-/***** PAGINATION ******/
+/************* PAGINATION *************/
 
 .pagination {
   margin-top: 100px;

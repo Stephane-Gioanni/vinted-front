@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "@/app/Components/Header";
+import Footer from "@/app/Components/Footer";
 import Widthalert from "@/app/Components/Widthalert";
 import Image from "next/image";
 import Banniere from "./banniere.png";
@@ -210,6 +211,7 @@ export default function Offer({ params }) {
                   </div>
                 </div>
               </div>
+              <Footer></Footer>
             </div>
           ) : (
             <Widthalert></Widthalert>
