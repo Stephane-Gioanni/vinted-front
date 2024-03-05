@@ -4,6 +4,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Widthalert from "../Components/Widthalert";
+import AlertLog from "../Components/AlertLog";
 import Header from "@/app/Components/Header";
 import Footer from "../Components/Footer";
 import axios from "axios";
@@ -16,6 +17,8 @@ export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [file, setFile] = useState({});
+  const [alertReason, setAlertReason] = useState("");
+  const [alertLog, setAlertLog] = useState(false);
 
   const [windowWidth, setWindowWidth] = useState(1200);
 
@@ -62,10 +65,12 @@ export default function Signup() {
           setUser(response.data.token);
           router.push("/");
         } else {
-          alert("une erreur est survenue");
+          setAlertReason("Une erreur est survenue");
+          setAlertLog(true);
         }
       } else {
-        alert("Missing parameters");
+        setAlertReason("Missing parameters.");
+        setAlertLog(true);
       }
     } catch (error) {
       alert(error.message);
@@ -111,6 +116,17 @@ export default function Signup() {
               onChange={(event) => setFile(event.target.files[0])}
             />
           </div>
+          {alertLog === true ? (
+            <div
+              onClick={() => {
+                setAlertLog(false);
+              }}
+            >
+              <AlertLog alertReason={alertReason}></AlertLog>
+            </div>
+          ) : (
+            <div></div>
+          )}
           <button type="submit" className={styles.button}>
             Create an account
           </button>

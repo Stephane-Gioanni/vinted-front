@@ -6,6 +6,7 @@ import Link from "next/link";
 import Header from "@/app/Components/Header";
 import Footer from "../Components/Footer";
 import Widthalert from "../Components/Widthalert";
+import AlertLog from "../Components/AlertLog";
 import axios from "axios";
 import Cookies from "js-cookie";
 import styles from "./login.module.css";
@@ -18,6 +19,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState(Cookies.get("userToken") || null);
+  const [alertReason, setAlertReason] = useState("");
+  const [alertLog, setAlertLog] = useState(false);
 
   console.log(email, password);
 
@@ -60,10 +63,12 @@ export default function Login() {
         setUser(response.data.token);
         router.push("/");
       } else {
-        alert(error.response.data.message);
+        setAlertReason(error.response.data.message);
+        setAlertLog(true);
       }
     } catch (error) {
-      alert(error.response.data.message);
+      setAlertReason(error.response.data.message);
+      setAlertLog(true);
     }
   };
 
@@ -87,6 +92,17 @@ export default function Login() {
             onChange={(event) => setPassword(event.target.value)}
             className={styles.input}
           />
+          {alertLog === true ? (
+            <div
+              onClick={() => {
+                setAlertLog(false);
+              }}
+            >
+              <AlertLog alertReason={alertReason}></AlertLog>
+            </div>
+          ) : (
+            <div></div>
+          )}
           <button type="submit" className={styles.button}>
             Log in
           </button>
